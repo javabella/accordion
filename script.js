@@ -67,6 +67,7 @@
 		/**
 		 * @listens click
 		 * @param  {number=} index
+		 * @private
 		 */
 		_onItemClick: function(index) {
 			this.setActiveItem(index);
