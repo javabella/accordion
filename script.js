@@ -41,7 +41,6 @@
 		 * @param {number=} index
 		 */
 		setActiveItem: function(index) {
-			this.items = document.querySelectorAll(this._itemSelector);
 			var activeItem = this.element.getElementsByClassName(this._activeClass)[0];
 			if (activeItem) {
 				activeItem.classList.remove(this._activeClass);
@@ -53,6 +52,7 @@
 			this.items[index].classList.add(this._activeClass);
 		},
 		init: function() {
+			this.items = document.querySelectorAll(this._itemSelector);
 			this.setActiveItem();
 
 			for (var i = 0; i < this.items.length; i++) {
@@ -70,7 +70,9 @@
 		 * @private
 		 */
 		_onItemClick: function(index) {
-			this.setActiveItem(index);
+			if (!this.items[index].classList.contains(this._activeClass)) {
+				this.setActiveItem(index);
+			}
 		}
 	}
 
